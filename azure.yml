@@ -1,0 +1,19 @@
+
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-18.04'
+
+container: mcr.microsoft.com/playwright:bionic
+
+steps:
+  - task: NodeTool@0
+    Inputs:
+      versionSpec: '10.x'
+      displayName: 'Install Node js'
+
+  - scripts: | 
+      npm install
+      npm run test
+    displayName: 'Npm install and run the tests'
